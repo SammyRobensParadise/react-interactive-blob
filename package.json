@@ -1,0 +1,52 @@
+{
+  "name": "react-interactive-blob",
+  "version": "1.0.0",
+  "description": "React Interactive Blob",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "scripts": {
+    "test": "test",
+    "build": "rollup -c",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SammyRobensParadise/react-interactive-blob.git"
+  },
+  "keywords": [
+    "React",
+    "three.js",
+    "interactive",
+    "blob"
+  ],
+  "author": "Sammy Robens-Paradise",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SammyRobensParadise/react-interactive-blob/issues"
+  },
+  "homepage": "https://github.com/SammyRobensParadise/react-interactive-blob#readme",
+  "devDependencies": {
+    "@babel/core": "^7.18.6",
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/builder-webpack4": "^6.5.9",
+    "@storybook/manager-webpack4": "^6.5.9",
+    "@storybook/react": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/react": "^18.0.14",
+    "babel-loader": "^8.2.5",
+    "react": "^18.2.0",
+    "rollup": "^2.75.7",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {}
+}
