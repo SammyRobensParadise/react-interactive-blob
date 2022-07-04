@@ -3,11 +3,7 @@ export default {
     browser: true,
     es2021: true
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended'
-  ],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:@typescript-eslint/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -18,4 +14,5 @@ export default {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {}
-}
+};
+export const extends = ['plugin:storybook/recommended'];
