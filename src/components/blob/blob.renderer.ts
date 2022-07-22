@@ -23,11 +23,12 @@ export default class BlobInstance {
   _position: coordinate2D
   _running: boolean
 
-  constructor() {
+  constructor(initColor?: string, numPoints?: number) {
     this.points = []
-    this._color = DEFAULT_COLOR
+    this._color = initColor ?? DEFAULT_COLOR
     this._mousePos = DEFAULT_CENTER
-    this._points = DEFAULT_NUMBER_POINTS
+    this._points =
+      numPoints && numPoints > 2 ? numPoints : DEFAULT_NUMBER_POINTS
     this._radius = DEFAULT_RADIUS
     this._position = DEFAULT_CENTER
     this._running = false

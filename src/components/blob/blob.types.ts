@@ -5,6 +5,9 @@ export interface BlobInterface {
   radius?: number
   // sensitivity of blob to mouse jitter
   sensitivity?: number
+  // the number of points used to construct the blob
+  points?: number
+  //the height of the blob canvas
   height: number
 }
 

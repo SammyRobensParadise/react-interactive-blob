@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import {
   DEFAULT_COLOR,
+  DEFAULT_NUMBER_POINTS,
   DEFAULT_RADIUS,
   DEFAULT_SENSITIVITY
 } from './blob.config'
@@ -12,6 +13,7 @@ const Blob = ({
   color = DEFAULT_COLOR,
   radius = DEFAULT_RADIUS,
   sensitivity = DEFAULT_SENSITIVITY,
+  points = DEFAULT_NUMBER_POINTS,
   height = window.innerHeight
 }: BlobInterface): JSX.Element => {
   const [blob, setBlob] = useState<BlobInstance | null>(null)
@@ -96,7 +98,7 @@ const Blob = ({
   )
 
   useEffect(() => {
-    setBlob(new BlobInstance())
+    setBlob(new BlobInstance(color, points))
   }, [setBlob])
 
   useEffect(() => {

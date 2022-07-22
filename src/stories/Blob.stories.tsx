@@ -30,6 +30,13 @@ export default {
       defaultValue: 0.5,
       description: 'Sensitivity of the blob component to mouse jitter',
       type: 'number'
+    },
+    points: {
+      name: 'points',
+      control: { type: 'range', min: 3, max: 300, step: 1 },
+      defaultValue: 32,
+      description: 'the number of points used to construct the blob',
+      type: 'number'
     }
   }
 } as ComponentMeta<typeof Blob>
