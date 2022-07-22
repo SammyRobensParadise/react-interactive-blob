@@ -22,12 +22,13 @@ export default class BlobInstance {
   init() {
     for (let i = 0; i < this.numPoints; i++) {
       let point = new Point(this.divisional * (i + 1), this)
-      // point.acceleration = -1 + Math.random() * 2;
+      point.acceleration = -1 + Math.random() * 2
       this.push(point)
     }
   }
 
   render() {
+    debugger
     let canvas = this.canvas
     let ctx = this.ctx
     let position = this.position
@@ -149,7 +150,6 @@ export default class BlobInstance {
     }
   }
   get position() {
-    debugger
     return this._position
   }
 
@@ -192,10 +192,10 @@ export class Point {
       y: Math.sin(this.azimuth)
     }
     this._acceleration = -0.3 + Math.random() * 0.1
-    this._speed = 100
-    this._radialEffect = 10
+    this._speed = 0.5
+    this._radialEffect = 0.1
     this._elasticity = 0.001
-    this._friction = 0.0085
+    this._friction = 0.009
   }
 
   solveWith(leftPoint: Point, rightPoint: Point) {
