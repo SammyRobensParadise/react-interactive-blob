@@ -2,6 +2,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import Blob from '../components/blob/blob.component'
+import { BlobInterface } from '../components/blob/blob.types'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -9,16 +10,35 @@ export default {
   component: Blob,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' }
+    color: {
+      name: 'color',
+      control: 'color',
+      defaultValue: '#2f4acf',
+      description: 'Color of the blob component',
+      type: 'string'
+    },
+    radius: {
+      name: 'radius',
+      control: { type: 'range', min: 1, max: window.innerWidth / 4, step: 10 },
+      defaultValue: 128,
+      description: 'Radius of the blob component',
+      type: 'number'
+    },
+    sensitivity: {
+      name: 'sensitivity',
+      control: { type: 'range', min: 0.1, max: 10, step: 0.1 },
+      defaultValue: 0.5,
+      description: 'Sensitivity of the blob component to mouse jitter',
+      type: 'number'
+    }
   }
 } as ComponentMeta<typeof Blob>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Blob> = (args) => <Blob />
+const Template: ComponentStory<typeof Blob> = (args: BlobInterface) => (
+  <Blob {...args} />
+)
 
 export const Example = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Example.args = {
-  primary: true,
-  label: 'Blob'
-}
+Example.args = {}

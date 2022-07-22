@@ -14,3 +14,4 @@ export const DEFAULT_SPEED: number = 0.5
 export const DEFAULT_RADIAL_EFFECT: number = 0.1
 export const DEFAULT_ELASTICITY: number = 0.001
 export const DEFAULT_FRICTION_COEFFICIENT: number = 0.0095
+export const DEFAULT_SENSITIVITY: number = 0.5

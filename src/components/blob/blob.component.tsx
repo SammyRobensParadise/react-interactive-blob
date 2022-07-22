@@ -1,20 +1,19 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
+import {
+  DEFAULT_COLOR,
+  DEFAULT_RADIUS,
+  DEFAULT_SENSITIVITY
+} from './blob.config'
 
 import BlobInstance, { Point } from './blob.renderer'
+import { BlobInterface } from './blob.types'
 
 const Blob = ({
-  color = '#a30000',
-  radius = 100,
-  flowStrength = 0.75,
-  className = '',
+  color = DEFAULT_COLOR,
+  radius = DEFAULT_RADIUS,
+  sensitivity = DEFAULT_SENSITIVITY,
   height = window.innerHeight
-}: {
-  color?: string
-  radius?: number
-  className?: string
-  flowStrength?: number
-  height?: number
-}): JSX.Element => {
+}: BlobInterface): JSX.Element => {
   const [blob, setBlob] = useState<BlobInstance | null>(null)
   const canvas = useRef<HTMLCanvasElement | null>(null)
   const [hover, updateHover] = useState<boolean>(false)
@@ -82,7 +81,7 @@ const Blob = ({
             }
             strength =
               Math.sqrt(strength.x * strength.x + strength.y * strength.y) *
-              flowStrength
+              sensitivity
             if (strength > 100) strength = 100
             nearestPoint = nearestPoint as Point
             nearestPoint.acceleration = (strength / 100) * (hover ? -1 : 1)
@@ -93,7 +92,7 @@ const Blob = ({
         oldMousePoint.y = e.clientY
       }
     },
-    [blob, hover, oldMousePoint, flowStrength]
+    [blob, hover, oldMousePoint, sensitivity]
   )
 
   useEffect(() => {
@@ -130,14 +129,7 @@ const Blob = ({
     }
   }, [mouseMove])
 
-  return (
-    <canvas
-      touch-action="none"
-      ref={canvas}
-      className={`${className}`}
-      height={height}
-    />
-  )
+  return <canvas touch-action="none" ref={canvas} height={height} />
 }
 
 export default Blob
