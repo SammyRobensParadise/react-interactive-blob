@@ -5,7 +5,7 @@ import Blob from '../components/blob/blob.component'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Example/Button',
+  title: 'Example/Blob',
   component: Blob,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
@@ -16,9 +16,9 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Blob> = (args) => <Blob />
 
-export const Primary = Template.bind({})
+export const Example = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
+Example.args = {
   primary: true,
   label: 'Blob'
 }

@@ -1,41 +1,51 @@
+import {
+  DEFAULT_CENTER,
+  DEFAULT_COLOR,
+  DEFAULT_ELASTICITY,
+  DEFAULT_FRICTION_COEFFICIENT,
+  DEFAULT_INITIAL_ACCELERATION,
+  DEFAULT_INITIAL_POINT_ACCELERATION,
+  DEFAULT_NUMBER_POINTS,
+  DEFAULT_RADIAL_EFFECT,
+  DEFAULT_RADIUS,
+  DEFAULT_SPEED
+} from './blob.config'
+import { coordinate2D } from './blob.types'
+
 export default class BlobInstance {
   points: Array<Point>
   ctx: CanvasRenderingContext2D | undefined | null
   _color: string
-  _mousePos: { x: number; y: number }
+  _mousePos: coordinate2D
   _canvas: HTMLCanvasElement | undefined
   _points: number
   _radius: number
-  _position: { x: number; y: number }
+  _position: coordinate2D
   _running: boolean
 
   constructor() {
     this.points = []
-    this._color = ''
-    this._mousePos = { x: 0.5, y: 0.5 }
-    this._points = 32
-    this._radius = 128
-    this._position = { x: 0.5, y: 0.5 }
+    this._color = DEFAULT_COLOR
+    this._mousePos = DEFAULT_CENTER
+    this._points = DEFAULT_NUMBER_POINTS
+    this._radius = DEFAULT_RADIUS
+    this._position = DEFAULT_CENTER
     this._running = false
   }
 
-  init() {
+  init(): void {
     for (let i = 0; i < this.numPoints; i++) {
       let point = new Point(this.divisional * (i + 1), this)
-      point.acceleration = -1 + Math.random() * 2
+      point.acceleration = DEFAULT_INITIAL_ACCELERATION
       this.push(point)
     }
   }
 
-  render() {
-    debugger
+  render(): void {
     let canvas = this.canvas
     let ctx = this.ctx
-    let position = this.position
     let pointsArray = this.points
-    let radius = this.radius
     let points = this.numPoints
-    let divisional = this.divisional
     let center = this.center
     if (ctx != undefined && canvas) {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -99,10 +109,10 @@ export default class BlobInstance {
     }
   }
 
-  set color(value) {
+  set color(value: string) {
     this._color = value
   }
-  get color() {
+  get color(): string {
     return this._color
   }
 
@@ -113,7 +123,7 @@ export default class BlobInstance {
     return this._mousePos
   }
 
-  set canvas(value) {
+  set canvas(value: HTMLCanvasElement | undefined) {
     if (
       value instanceof HTMLElement &&
       value.tagName.toLowerCase() === 'canvas'
@@ -122,20 +132,20 @@ export default class BlobInstance {
       this.ctx = this._canvas.getContext('2d')
     }
   }
-  get canvas() {
+  get canvas(): HTMLCanvasElement | undefined {
     return this._canvas
   }
 
-  set numPoints(value) {
+  set numPoints(value: number) {
     if (value > 2) {
       this._points = value
     }
   }
-  get numPoints() {
-    return this._points || 32
+  get numPoints(): number {
+    return this._points
   }
 
-  set radius(value) {
+  set radius(value: number) {
     if (value > 0) {
       this._radius = value
     }
@@ -144,29 +154,29 @@ export default class BlobInstance {
     return this._radius
   }
 
-  set position(value) {
+  set position(value: coordinate2D) {
     if (typeof value == 'object' && value.x && value.y) {
       this._position = value
     }
   }
-  get position() {
+  get position(): coordinate2D {
     return this._position
   }
 
-  get divisional() {
+  get divisional(): number {
     return (Math.PI * 2) / this.numPoints
   }
 
-  get center() {
+  get center(): coordinate2D {
     return this.canvas
       ? {
           x: this.canvas.width * this.position.x,
           y: this.canvas.height * this.position.y
         }
-      : { x: 0, y: 0 }
+      : DEFAULT_CENTER
   }
 
-  set running(value) {
+  set running(value: boolean) {
     this._running = value === true
   }
   get running(): boolean {
@@ -191,11 +201,11 @@ export class Point {
       x: Math.cos(this.azimuth),
       y: Math.sin(this.azimuth)
     }
-    this._acceleration = -0.3 + Math.random() * 0.1
-    this._speed = 0.5
-    this._radialEffect = 0.1
-    this._elasticity = 0.001
-    this._friction = 0.009
+    this._acceleration = DEFAULT_INITIAL_POINT_ACCELERATION
+    this._speed = DEFAULT_SPEED
+    this._radialEffect = DEFAULT_RADIAL_EFFECT
+    this._elasticity = DEFAULT_ELASTICITY
+    this._friction = DEFAULT_FRICTION_COEFFICIENT
   }
 
   solveWith(leftPoint: Point, rightPoint: Point) {
@@ -207,36 +217,36 @@ export class Point {
       this.speed * this.friction
   }
 
-  set acceleration(value) {
+  set acceleration(value: number) {
     if (typeof value == 'number') {
       this._acceleration = value
       this.speed += this._acceleration * 2
     }
   }
   get acceleration() {
-    return this._acceleration || 0
+    return this._acceleration
   }
 
-  set speed(value) {
+  set speed(value: number) {
     if (typeof value == 'number') {
       this._speed = value
       this.radialEffect += this._speed * 5
     }
   }
   get speed() {
-    return this._speed || 0
+    return this._speed
   }
 
-  set radialEffect(value) {
+  set radialEffect(value: number) {
     if (typeof value == 'number') {
       this._radialEffect = value
     }
   }
-  get radialEffect() {
-    return this._radialEffect || 0
+  get radialEffect(): number {
+    return this._radialEffect
   }
 
-  get position() {
+  get position(): coordinate2D {
     return {
       x:
         this.parent.center.x +
@@ -247,11 +257,11 @@ export class Point {
     }
   }
 
-  get components(): { x: number; y: number } {
+  get components(): coordinate2D {
     return this._components
   }
 
-  set elasticity(value) {
+  set elasticity(value: number) {
     if (typeof value === 'number') {
       this._elasticity = value
     }
@@ -259,7 +269,7 @@ export class Point {
   get elasticity(): number {
     return this._elasticity
   }
-  set friction(value) {
+  set friction(value: number) {
     if (typeof value === 'number') {
       this._friction = value
     }
