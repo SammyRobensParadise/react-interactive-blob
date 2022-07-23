@@ -18,11 +18,15 @@ React Interactive Blob is an interactive and customizable blob component for rea
 ### Install `react-interactive-blob`
 
 ```bash
+
 npm install react-interactive-blob
+
 ```
 
 ```bash
+
 yarn add react-interactive-blob
+
 ```
 
 ### Add to your project
@@ -30,12 +34,8 @@ yarn add react-interactive-blob
 ```tsx
 import { Blob } from 'react-interactive-blob'
 
-const MyComponent() {
-    return (
-        <div>
-            <Blob height={500} radius={150} />
-        </div>
-    )
+function MyComponent() {
+  return <Blob height={500} radius={150} />
 }
 ```
 

@@ -127,4 +127,3 @@ const Template: ComponentStory<typeof Blob> = (args: BlobInterface) => (
 
 export const blob = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-blob.args = {}
