@@ -89,6 +89,13 @@ export default {
       description: 'Speed of continuious point motion',
       type: 'number'
     },
+    height: {
+      name: 'height',
+      control: { type: 'range', min: 1, max: window.innerHeight, step: 5 },
+      defaultValue: window.innerHeight - 250,
+      description: 'Canvas Height',
+      type: 'number'
+    },
     smoothing: {
       name: 'smoothing',
       control: 'boolean',
