@@ -70,7 +70,6 @@ const Blob = ({
         } else if (dist > blob.radius) {
           const vector = { x: e.clientX - pos.x, y: e.clientY - pos.y }
           angle = Math.atan2(vector.y, vector.x) + Math.random()
-          blob.color = ''
         }
 
         if (typeof angle === 'number') {
