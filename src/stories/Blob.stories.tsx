@@ -44,6 +44,13 @@ export default {
       defaultValue: true,
       description: 'smoothing between points',
       type: 'boolean'
+    },
+    markers: {
+      name: 'markers',
+      control: 'boolean',
+      defaultValue: false,
+      description: 'show markers at each point',
+      type: 'boolean'
     }
   }
 } as ComponentMeta<typeof Blob>

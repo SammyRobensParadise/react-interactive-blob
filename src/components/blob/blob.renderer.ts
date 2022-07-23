@@ -23,8 +23,14 @@ export default class BlobInstance {
   _position: coordinate2D
   _running: boolean
   _smoothing: boolean
+  _markers: boolean
 
-  constructor(initColor?: string, numPoints?: number, smooth?: boolean) {
+  constructor(
+    initColor?: string,
+    numPoints?: number,
+    smooth?: boolean,
+    marks?: boolean
+  ) {
     this.points = []
     this._color = initColor ?? DEFAULT_COLOR
     this._mousePos = DEFAULT_CENTER
@@ -34,6 +40,7 @@ export default class BlobInstance {
     this._position = DEFAULT_CENTER
     this._running = false
     this._smoothing = typeof smooth === 'boolean' ? smooth : true
+    this._markers = typeof marks === 'boolean' ? marks : false
   }
 
   init(): void {
@@ -73,8 +80,10 @@ export default class BlobInstance {
       )
 
       let p2 = pointsArray[i].position
+
       var xc = (p1.x + p2.x) / 2
       var yc = (p1.y + p2.y) / 2
+
       if (this.smoothing) {
         ctx?.quadraticCurveTo(p1.x, p1.y, xc, yc)
       }
@@ -84,16 +93,15 @@ export default class BlobInstance {
         }
 
         ctx.fillStyle = this.color
-        // ctx.fillRect(p1.x-2.5, p1.y-2.5, 5, 5);
+        if (this.markers) {
+          ctx.fillRect(p1.x - 2.5, p1.y - 2.5, 5, 5)
+        }
       }
-
       p1 = p2
     }
 
     var xc = (p1.x + _p2.x) / 2
     var yc = (p1.y + _p2.y) / 2
-
-    ctx?.quadraticCurveTo(p1.x, p1.y, xc, yc)
 
     if (ctx) {
       ctx.fillStyle = this.color
@@ -124,11 +132,19 @@ export default class BlobInstance {
   }
 
   set smoothing(value: boolean) {
-    this.smoothing = value
+    this._smoothing = value
   }
 
   get smoothing(): boolean {
     return this._smoothing
+  }
+
+  set markers(value: boolean) {
+    this._markers = value
+  }
+
+  get markers() {
+    return this._markers
   }
 
   set mousePos(value) {

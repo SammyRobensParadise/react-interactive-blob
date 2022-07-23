@@ -9,6 +9,8 @@ export interface BlobInterface {
   points?: number
   // smoothing between points
   smoothing?: boolean
+  // show markers at each point
+  markers?: boolean
   //the height of the blob canvas
   height: number
 }
