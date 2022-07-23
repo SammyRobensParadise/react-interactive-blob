@@ -24,12 +24,14 @@ export default class BlobInstance {
   _running: boolean
   _smoothing: boolean
   _markers: boolean
+  _showMousePosition: boolean
 
   constructor(
     initColor?: string,
     numPoints?: number,
     smooth?: boolean,
-    marks?: boolean
+    marks?: boolean,
+    initShowMousePosition?: boolean
   ) {
     this.points = []
     this._color = initColor ?? DEFAULT_COLOR
@@ -41,6 +43,8 @@ export default class BlobInstance {
     this._running = false
     this._smoothing = typeof smooth === 'boolean' ? smooth : true
     this._markers = typeof marks === 'boolean' ? marks : false
+    this._showMousePosition =
+      typeof initShowMousePosition === 'boolean' ? initShowMousePosition : false
   }
 
   init(): void {
@@ -108,12 +112,15 @@ export default class BlobInstance {
       ctx.strokeStyle = this.color
     }
 
-    /*
-    if(this.mousePos) {
-      let angle = Math.atan2(this.mousePos.y, this.mousePos.x) + Math.PI;
-      ctx.fillRect(center.x + Math.cos(angle) * this.radius, center.y + Math.sin(angle) * this.radius, 5, 5);
+    if (this.showMousePosition) {
+      let angle = Math.atan2(this.mousePos.y, this.mousePos.x) + Math.PI
+      ctx?.fillRect(
+        center.x + Math.cos(angle) * this.radius,
+        center.y + Math.sin(angle) * this.radius,
+        10,
+        10
+      )
     }
-*/
     requestAnimationFrame(this.render.bind(this))
   }
 
@@ -144,6 +151,14 @@ export default class BlobInstance {
 
   get markers() {
     return this._markers
+  }
+
+  set showMousePosition(value: boolean) {
+    this._showMousePosition = value
+  }
+
+  get showMousePosition(): boolean {
+    return this._showMousePosition
   }
 
   set mousePos(value) {

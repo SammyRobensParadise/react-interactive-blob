@@ -51,6 +51,13 @@ export default {
       defaultValue: false,
       description: 'show markers at each point',
       type: 'boolean'
+    },
+    showMousePosition: {
+      name: 'showMousePosition',
+      control: 'boolean',
+      defaultValue: false,
+      description: 'show the position of the mouse relative to the blob',
+      type: 'boolean'
     }
   }
 } as ComponentMeta<typeof Blob>

@@ -11,6 +11,8 @@ export interface BlobInterface {
   smoothing?: boolean
   // show markers at each point
   markers?: boolean
+  // show the position of the mouse relative to the blob
+  showMousePosition?: boolean
   //the height of the blob canvas
   height: number
 }

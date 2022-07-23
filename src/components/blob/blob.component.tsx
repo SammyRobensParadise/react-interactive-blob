@@ -16,6 +16,7 @@ const Blob = ({
   points = DEFAULT_NUMBER_POINTS,
   smoothing = true,
   markers = true,
+  showMousePosition = false,
   height = window.innerHeight
 }: BlobInterface): JSX.Element => {
   const [blob, setBlob] = useState<BlobInstance | null>(null)
@@ -100,7 +101,9 @@ const Blob = ({
   )
 
   useEffect(() => {
-    setBlob(new BlobInstance(color, points, smoothing, markers))
+    setBlob(
+      new BlobInstance(color, points, smoothing, markers, showMousePosition)
+    )
   }, [setBlob])
 
   useEffect(() => {
