@@ -37,6 +37,13 @@ export default {
       defaultValue: 32,
       description: 'the number of points used to construct the blob',
       type: 'number'
+    },
+    smoothing: {
+      name: 'smoothing',
+      control: 'boolean',
+      defaultValue: true,
+      description: 'smoothing between points',
+      type: 'boolean'
     }
   }
 } as ComponentMeta<typeof Blob>

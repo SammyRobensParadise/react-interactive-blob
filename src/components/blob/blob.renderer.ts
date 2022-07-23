@@ -22,8 +22,9 @@ export default class BlobInstance {
   _radius: number
   _position: coordinate2D
   _running: boolean
+  _smoothing: boolean
 
-  constructor(initColor?: string, numPoints?: number) {
+  constructor(initColor?: string, numPoints?: number, smooth?: boolean) {
     this.points = []
     this._color = initColor ?? DEFAULT_COLOR
     this._mousePos = DEFAULT_CENTER
@@ -32,6 +33,7 @@ export default class BlobInstance {
     this._radius = DEFAULT_RADIUS
     this._position = DEFAULT_CENTER
     this._running = false
+    this._smoothing = typeof smooth === 'boolean' ? smooth : true
   }
 
   init(): void {
@@ -73,10 +75,14 @@ export default class BlobInstance {
       let p2 = pointsArray[i].position
       var xc = (p1.x + p2.x) / 2
       var yc = (p1.y + p2.y) / 2
-      ctx?.quadraticCurveTo(p1.x, p1.y, xc, yc)
-      //ctx?.lineTo(p2.x, p2.y)
-
+      if (this.smoothing) {
+        ctx?.quadraticCurveTo(p1.x, p1.y, xc, yc)
+      }
       if (ctx) {
+        if (!this.smoothing) {
+          ctx?.lineTo(p2.x, p2.y)
+        }
+
         ctx.fillStyle = this.color
         // ctx.fillRect(p1.x-2.5, p1.y-2.5, 5, 5);
       }
@@ -115,6 +121,14 @@ export default class BlobInstance {
   }
   get color(): string {
     return this._color
+  }
+
+  set smoothing(value: boolean) {
+    this.smoothing = value
+  }
+
+  get smoothing(): boolean {
+    return this._smoothing
   }
 
   set mousePos(value) {

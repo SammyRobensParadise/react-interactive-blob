@@ -7,6 +7,8 @@ export interface BlobInterface {
   sensitivity?: number
   // the number of points used to construct the blob
   points?: number
+  // smoothing between points
+  smoothing?: boolean
   //the height of the blob canvas
   height: number
 }
