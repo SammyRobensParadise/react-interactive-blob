@@ -6,10 +6,10 @@ export const DEFAULT_CENTER: coordinate2D = {
   x: 0.5,
   y: 0.5
 }
-export const DEFAULT_COLOR: string = '#000000'
+export const DEFAULT_COLOR: string = '#2f4acf'
 export const DEFAULT_INITIAL_ACCELERATION: number = -1 + Math.random() * 2
 export const DEFAULT_INITIAL_POINT_ACCELERATION: number =
-  -0.3 + Math.random() * 0.1
+  -1 + Math.random() * 0.1
 export const DEFAULT_SPEED: number = 0.5
 export const DEFAULT_RADIAL_EFFECT: number = 0.1
 export const DEFAULT_ELASTICITY: number = 0.001

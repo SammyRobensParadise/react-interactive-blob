@@ -26,6 +26,7 @@ export default class BlobInstance {
   _markers: boolean
   _showMousePosition: boolean
   _speed: number
+  _friction: number
 
   constructor(
     initColor?: string,
@@ -33,7 +34,8 @@ export default class BlobInstance {
     smooth?: boolean,
     marks?: boolean,
     initShowMousePosition?: boolean,
-    initSpeed?: number
+    initSpeed?: number,
+    initFriction?: number
   ) {
     this.points = []
     this._color = initColor ?? DEFAULT_COLOR
@@ -48,11 +50,17 @@ export default class BlobInstance {
     this._showMousePosition =
       typeof initShowMousePosition === 'boolean' ? initShowMousePosition : false
     this._speed = initSpeed ?? DEFAULT_SPEED
+    this._friction = initFriction ?? DEFAULT_FRICTION_COEFFICIENT
   }
 
   init(): void {
     for (let i = 0; i < this.numPoints; i++) {
-      let point = new Point(this.divisional * (i + 1), this, this.speed)
+      let point = new Point(
+        this.divisional * (i + 1),
+        this,
+        this.speed,
+        this.friction
+      )
       point.acceleration = DEFAULT_INITIAL_ACCELERATION
       this.push(point)
     }
@@ -146,6 +154,10 @@ export default class BlobInstance {
 
   get smoothing(): boolean {
     return this._smoothing
+  }
+
+  get friction(): number {
+    return this._friction
   }
 
   set markers(value: boolean) {
@@ -246,7 +258,12 @@ export class Point {
   _elasticity: number
   _friction: number
 
-  constructor(azimuth: number, parent: BlobInstance, speed: number) {
+  constructor(
+    azimuth: number,
+    parent: BlobInstance,
+    speed: number,
+    friction: number
+  ) {
     this.parent = parent
     this.azimuth = Math.PI - azimuth
     this._components = {
@@ -257,7 +274,7 @@ export class Point {
     this._speed = speed || DEFAULT_SPEED
     this._radialEffect = DEFAULT_RADIAL_EFFECT
     this._elasticity = DEFAULT_ELASTICITY
-    this._friction = DEFAULT_FRICTION_COEFFICIENT
+    this._friction = friction
   }
 
   solveWith(leftPoint: Point, rightPoint: Point) {
