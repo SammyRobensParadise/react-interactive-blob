@@ -111,6 +111,7 @@ export default class BlobInstance {
         if (!this.smoothing) {
           ctx?.lineTo(p2.x, p2.y)
         }
+
         ctx.fillStyle = this.color
         if (this.markers) {
           ctx.fillRect(p1.x - 5, p1.y - 5, 10, 10)
