@@ -10,7 +10,7 @@ import {
 } from './blob.config'
 
 import BlobInstance, { Point } from './blob.renderer'
-import { BlobInterface } from './blob.types'
+import { BlobInterface, coordinate2D } from './blob.types'
 
 const Blob = ({
   color = DEFAULT_COLOR,
@@ -71,7 +71,7 @@ const Blob = ({
 
         if (typeof angle === 'number') {
           let nearestPoint: null | Point = null
-          let distanceFromPoint = 100
+          let distanceFromPoint = 1
 
           blob.points.forEach((point: Point) => {
             if (angle) {
@@ -83,7 +83,7 @@ const Blob = ({
           })
 
           if (nearestPoint) {
-            let strength: { x: number; y: number } | number = {
+            let strength: coordinate2D | number = {
               x: oldMousePoint.x - e.clientX,
               y: oldMousePoint.y - e.clientY
             }

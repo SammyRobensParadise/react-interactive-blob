@@ -58,13 +58,7 @@ export default class BlobInstance {
 
   init(): void {
     for (let i = 0; i < this.numPoints; i++) {
-      let point = new Point(
-        this.divisional * (i + 1),
-        this,
-        this.speed,
-        this.friction,
-        this.elasticity
-      )
+      let point = new Point(this.divisional * (i + 1), this)
       point.acceleration = DEFAULT_INITIAL_ACCELERATION
       this.push(point)
     }
@@ -106,6 +100,7 @@ export default class BlobInstance {
       if (this.smoothing) {
         ctx?.quadraticCurveTo(p1.x, p1.y, xc, yc)
       }
+
       if (ctx) {
         if (!this.smoothing) {
           ctx?.lineTo(p2.x, p2.y)
@@ -266,13 +261,7 @@ export class Point {
   _elasticity: number
   _friction: number
 
-  constructor(
-    azimuth: number,
-    parent: BlobInstance,
-    speed: number,
-    friction: number,
-    elasticity: number
-  ) {
+  constructor(azimuth: number, parent: BlobInstance) {
     this.parent = parent
     this.azimuth = Math.PI - azimuth
     this._components = {
@@ -280,10 +269,10 @@ export class Point {
       y: Math.sin(this.azimuth)
     }
     this._acceleration = DEFAULT_INITIAL_POINT_ACCELERATION
-    this._speed = speed || DEFAULT_SPEED
+    this._speed = parent.speed
     this._radialEffect = DEFAULT_RADIAL_EFFECT
-    this._elasticity = elasticity
-    this._friction = friction
+    this._elasticity = parent.elasticity
+    this._friction = parent.friction
   }
 
   solveWith(leftPoint: Point, rightPoint: Point) {
