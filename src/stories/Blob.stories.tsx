@@ -15,7 +15,7 @@ import {
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Example/Blob',
+  title: 'Blob',
   component: Blob,
   parameters: {
     docs: {
@@ -63,35 +63,35 @@ export default {
       name: 'points',
       control: { type: 'range', min: 3, max: 300, step: 1 },
       defaultValue: DEFAULT_NUMBER_POINTS,
-      description: 'the number of points used to construct the blob',
+      description: 'The number of points used to construct the blob',
       type: 'number'
     },
     speed: {
       name: 'speed',
       control: { type: 'range', min: 1, max: 10, step: 0.25 },
       defaultValue: DEFAULT_SPEED,
-      description: 'speed of continuious point motion',
+      description: 'Speed of continuious point motion',
       type: 'number'
     },
     smoothing: {
       name: 'smoothing',
       control: 'boolean',
       defaultValue: true,
-      description: 'smoothing between points',
+      description: 'Smoothing between points',
       type: 'boolean'
     },
     markers: {
       name: 'markers',
       control: 'boolean',
       defaultValue: false,
-      description: 'show markers at each point',
+      description: 'Show markers at each point',
       type: 'boolean'
     },
     showMousePosition: {
       name: 'showMousePosition',
       control: 'boolean',
       defaultValue: false,
-      description: 'show the position of the mouse relative to the blob',
+      description: 'Show the position of the mouse relative to the blob',
       type: 'boolean'
     }
   }
@@ -102,6 +102,6 @@ const Template: ComponentStory<typeof Blob> = (args: BlobInterface) => (
   <Blob {...args} />
 )
 
-export const Example = Template.bind({})
+export const blob = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Example.args = {}
+blob.args = {}
