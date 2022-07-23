@@ -8,6 +8,11 @@ import { BlobInterface } from '../components/blob/blob.types'
 export default {
   title: 'Example/Blob',
   component: Blob,
+  parameters: {
+    docs: {
+      description: { component: 'React Blob Component' }
+    }
+  },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     color: {
