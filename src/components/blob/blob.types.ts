@@ -13,6 +13,8 @@ export interface BlobInterface {
   smoothing?: boolean
   // coefficient of friction
   friction?: number
+  // elasticity of the blob
+  elasticity?: number
   // show markers at each point
   markers?: boolean
   // show the position of the mouse relative to the blob

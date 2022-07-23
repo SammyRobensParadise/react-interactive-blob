@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import {
   DEFAULT_COLOR,
+  DEFAULT_ELASTICITY,
   DEFAULT_FRICTION_COEFFICIENT,
   DEFAULT_NUMBER_POINTS,
   DEFAULT_RADIUS,
@@ -21,6 +22,7 @@ const Blob = ({
   markers = true,
   showMousePosition = false,
   friction = DEFAULT_FRICTION_COEFFICIENT,
+  elasticity = DEFAULT_ELASTICITY,
   height = window.innerHeight
 }: BlobInterface): JSX.Element => {
   const [blob, setBlob] = useState<BlobInstance | null>(null)
@@ -109,7 +111,8 @@ const Blob = ({
         markers,
         showMousePosition,
         speed,
-        friction
+        friction,
+        elasticity
       )
     )
   }, [setBlob])

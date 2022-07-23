@@ -5,6 +5,7 @@ import Blob from '../components/blob/blob.component'
 import { BlobInterface } from '../components/blob/blob.types'
 import {
   DEFAULT_COLOR,
+  DEFAULT_ELASTICITY,
   DEFAULT_FRICTION_COEFFICIENT,
   DEFAULT_NUMBER_POINTS,
   DEFAULT_RADIUS,
@@ -48,7 +49,14 @@ export default {
       name: 'friction',
       control: { type: 'range', min: 0, max: 0.9, step: 0.0001 },
       defaultValue: DEFAULT_FRICTION_COEFFICIENT,
-      description: 'Sensitivity of the blob component to mouse jitter',
+      description: 'Coefficient of friction',
+      type: 'number'
+    },
+    elasticity: {
+      name: 'elasticity',
+      control: { type: 'range', min: 0, max: 0.002, step: 0.0001 },
+      defaultValue: DEFAULT_ELASTICITY,
+      description: 'Elasticity of the blob',
       type: 'number'
     },
     points: {
