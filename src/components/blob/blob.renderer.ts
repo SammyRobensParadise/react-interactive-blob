@@ -301,6 +301,7 @@ export class Point {
       this.speed += this._acceleration * 2
     }
   }
+
   get acceleration() {
     return this._acceleration
   }
@@ -320,6 +321,7 @@ export class Point {
       this._radialEffect = value
     }
   }
+
   get radialEffect(): number {
     return this._radialEffect
   }
@@ -344,14 +346,17 @@ export class Point {
       this._elasticity = value
     }
   }
+
   get elasticity(): number {
     return this._elasticity
   }
+
   set friction(value: number) {
     if (typeof value === 'number') {
       this._friction = value
     }
   }
+
   get friction(): number {
     return this._friction
   }
