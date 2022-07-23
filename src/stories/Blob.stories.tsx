@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-
+import Readme from '../../README.md'
 import Blob from '../components/blob/blob.component'
 import { BlobInterface } from '../components/blob/blob.types'
 import {
@@ -21,7 +21,7 @@ export default {
   component: Blob,
   parameters: {
     docs: {
-      description: { component: 'React Blob Component' }
+      description: { component: Readme }
     }
   },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
