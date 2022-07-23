@@ -23,7 +23,6 @@ const Blob = ({
 }: BlobInterface): JSX.Element => {
   const [blob, setBlob] = useState<BlobInstance | null>(null)
   const canvas = useRef<HTMLCanvasElement | null>(null)
-  const [hover, updateHover] = useState<boolean>(false)
   const [oldMousePoint] = useState<{ x: number; y: number }>({
     x: 0,
     y: 0
@@ -60,11 +59,9 @@ const Blob = ({
         if (dist < blob.radius) {
           const vector = { x: e.clientX - pos.x, y: e.clientY - pos.y }
           angle = Math.atan2(vector.y, vector.x) + Math.random()
-          updateHover(true)
         } else if (dist > blob.radius) {
           const vector = { x: e.clientX - pos.x, y: e.clientY - pos.y }
           angle = Math.atan2(vector.y, vector.x) + Math.random()
-          updateHover(false)
           blob.color = ''
         }
 
@@ -89,9 +86,8 @@ const Blob = ({
             strength =
               Math.sqrt(strength.x * strength.x + strength.y * strength.y) *
               sensitivity
-            if (strength > 100) strength = 100
             nearestPoint = nearestPoint as Point
-            nearestPoint.acceleration = (strength / 100) * (hover ? -1 : 1)
+            nearestPoint.acceleration = strength / 100
           }
         }
 
@@ -99,7 +95,7 @@ const Blob = ({
         oldMousePoint.y = e.clientY
       }
     },
-    [blob, hover, oldMousePoint, sensitivity]
+    [blob, oldMousePoint, sensitivity]
   )
 
   useEffect(() => {
