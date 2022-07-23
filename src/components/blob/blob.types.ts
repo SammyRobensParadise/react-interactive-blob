@@ -15,6 +15,8 @@ export interface BlobInterface {
   friction?: number
   // elasticity of the blob
   elasticity?: number
+  // the acceleration of each point
+  acceleration?: number
   // show markers at each point
   markers?: boolean
   // show the position of the mouse relative to the blob

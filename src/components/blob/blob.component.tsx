@@ -3,6 +3,7 @@ import {
   DEFAULT_COLOR,
   DEFAULT_ELASTICITY,
   DEFAULT_FRICTION_COEFFICIENT,
+  DEFAULT_INITIAL_POINT_ACCELERATION,
   DEFAULT_NUMBER_POINTS,
   DEFAULT_RADIUS,
   DEFAULT_SENSITIVITY,
@@ -23,6 +24,7 @@ const Blob = ({
   showMousePosition = false,
   friction = DEFAULT_FRICTION_COEFFICIENT,
   elasticity = DEFAULT_ELASTICITY,
+  acceleration = DEFAULT_INITIAL_POINT_ACCELERATION,
   height = window.innerHeight
 }: BlobInterface): JSX.Element => {
   const [blob, setBlob] = useState<BlobInstance | null>(null)
@@ -112,7 +114,8 @@ const Blob = ({
         showMousePosition,
         speed,
         friction,
-        elasticity
+        elasticity,
+        acceleration
       )
     )
   }, [setBlob])

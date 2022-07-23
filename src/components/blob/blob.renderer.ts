@@ -28,6 +28,7 @@ export default class BlobInstance {
   _speed: number
   _friction: number
   _elasticity: number
+  _acceleration: number
 
   constructor(
     initColor?: string,
@@ -37,7 +38,8 @@ export default class BlobInstance {
     initShowMousePosition?: boolean,
     initSpeed?: number,
     initFriction?: number,
-    initElasticity?: number
+    initElasticity?: number,
+    initAcceleration?: number
   ) {
     this.points = []
     this._color = initColor ?? DEFAULT_COLOR
@@ -54,6 +56,7 @@ export default class BlobInstance {
     this._speed = initSpeed ?? DEFAULT_SPEED
     this._friction = initFriction ?? DEFAULT_FRICTION_COEFFICIENT
     this._elasticity = initElasticity ?? DEFAULT_ELASTICITY
+    this._acceleration = initAcceleration ?? DEFAULT_INITIAL_POINT_ACCELERATION
   }
 
   init(): void {
@@ -163,6 +166,10 @@ export default class BlobInstance {
     return this._elasticity
   }
 
+  get acceleration(): number {
+    return this._acceleration
+  }
+
   set markers(value: boolean) {
     this._markers = value
   }
@@ -268,7 +275,7 @@ export class Point {
       x: Math.cos(this.azimuth),
       y: Math.sin(this.azimuth)
     }
-    this._acceleration = DEFAULT_INITIAL_POINT_ACCELERATION
+    this._acceleration = parent.acceleration
     this._speed = parent.speed
     this._radialEffect = DEFAULT_RADIAL_EFFECT
     this._elasticity = parent.elasticity

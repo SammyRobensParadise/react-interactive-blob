@@ -7,6 +7,7 @@ import {
   DEFAULT_COLOR,
   DEFAULT_ELASTICITY,
   DEFAULT_FRICTION_COEFFICIENT,
+  DEFAULT_INITIAL_POINT_ACCELERATION,
   DEFAULT_NUMBER_POINTS,
   DEFAULT_RADIUS,
   DEFAULT_SENSITIVITY,
@@ -57,6 +58,13 @@ export default {
       control: { type: 'range', min: 0, max: 0.002, step: 0.0001 },
       defaultValue: DEFAULT_ELASTICITY,
       description: 'Elasticity of the blob',
+      type: 'number'
+    },
+    acceleration: {
+      name: 'acceleration',
+      control: { type: 'range', min: -10, max: 10, step: 0.5 },
+      defaultValue: DEFAULT_INITIAL_POINT_ACCELERATION,
+      description: 'The acceleration of each point',
       type: 'number'
     },
     points: {
