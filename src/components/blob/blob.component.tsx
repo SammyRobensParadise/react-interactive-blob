@@ -5,6 +5,7 @@ import {
   DEFAULT_FRICTION_COEFFICIENT,
   DEFAULT_INITIAL_POINT_ACCELERATION,
   DEFAULT_NUMBER_POINTS,
+  DEFAULT_RADIAL_EFFECT,
   DEFAULT_RADIUS,
   DEFAULT_SENSITIVITY,
   DEFAULT_SPEED
@@ -25,6 +26,7 @@ const Blob = ({
   friction = DEFAULT_FRICTION_COEFFICIENT,
   elasticity = DEFAULT_ELASTICITY,
   acceleration = DEFAULT_INITIAL_POINT_ACCELERATION,
+  radial = DEFAULT_RADIAL_EFFECT,
   height = window.innerHeight
 }: BlobInterface): JSX.Element => {
   const [blob, setBlob] = useState<BlobInstance | null>(null)
@@ -115,7 +117,8 @@ const Blob = ({
         speed,
         friction,
         elasticity,
-        acceleration
+        acceleration,
+        radial
       )
     )
   }, [setBlob])

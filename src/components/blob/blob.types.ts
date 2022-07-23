@@ -17,6 +17,8 @@ export interface BlobInterface {
   elasticity?: number
   // the acceleration of each point
   acceleration?: number
+  // radial effect constant
+  radial?: number
   // show markers at each point
   markers?: boolean
   // show the position of the mouse relative to the blob

@@ -9,6 +9,7 @@ import {
   DEFAULT_FRICTION_COEFFICIENT,
   DEFAULT_INITIAL_POINT_ACCELERATION,
   DEFAULT_NUMBER_POINTS,
+  DEFAULT_RADIAL_EFFECT,
   DEFAULT_RADIUS,
   DEFAULT_SENSITIVITY,
   DEFAULT_SPEED
@@ -65,6 +66,13 @@ export default {
       control: { type: 'range', min: -10, max: 10, step: 0.5 },
       defaultValue: DEFAULT_INITIAL_POINT_ACCELERATION,
       description: 'The acceleration of each point',
+      type: 'number'
+    },
+    radial: {
+      name: 'radial',
+      control: { type: 'range', min: -10, max: 10, step: 0.5 },
+      defaultValue: DEFAULT_RADIAL_EFFECT,
+      description: 'The radial effect constant',
       type: 'number'
     },
     points: {
