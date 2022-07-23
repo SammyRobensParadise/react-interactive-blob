@@ -26,7 +26,7 @@ const Blob = ({
     y: 0
   })
 
-  const handleResize = useCallback(() => {
+  const handleResize = useCallback((): void => {
     if (canvas.current && canvas.current.parentElement) {
       canvas.current.width = canvas.current.parentElement.clientWidth
       canvas.current.height = height
@@ -40,12 +40,12 @@ const Blob = ({
     handleResize()
   }, [handleResize])
 
-  useEffect(() => {
+  useEffect((): void => {
     handleResize()
   }, [handleResize])
 
   const mouseMove = useCallback(
-    (e: MouseEvent) => {
+    (e: MouseEvent): void => {
       if (blob) {
         const pos = blob.center
         const diff = { x: e.clientX - pos.x, y: e.clientY - pos.y }
