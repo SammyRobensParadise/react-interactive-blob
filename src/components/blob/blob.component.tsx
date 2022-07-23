@@ -3,7 +3,8 @@ import {
   DEFAULT_COLOR,
   DEFAULT_NUMBER_POINTS,
   DEFAULT_RADIUS,
-  DEFAULT_SENSITIVITY
+  DEFAULT_SENSITIVITY,
+  DEFAULT_SPEED
 } from './blob.config'
 
 import BlobInstance, { Point } from './blob.renderer'
@@ -14,6 +15,7 @@ const Blob = ({
   radius = DEFAULT_RADIUS,
   sensitivity = DEFAULT_SENSITIVITY,
   points = DEFAULT_NUMBER_POINTS,
+  speed = DEFAULT_SPEED,
   smoothing = true,
   markers = true,
   showMousePosition = false,
@@ -102,7 +104,14 @@ const Blob = ({
 
   useEffect(() => {
     setBlob(
-      new BlobInstance(color, points, smoothing, markers, showMousePosition)
+      new BlobInstance(
+        color,
+        points,
+        smoothing,
+        markers,
+        showMousePosition,
+        speed
+      )
     )
   }, [setBlob])
 

@@ -38,6 +38,13 @@ export default {
       description: 'the number of points used to construct the blob',
       type: 'number'
     },
+    speed: {
+      name: 'speed',
+      control: { type: 'range', min: 1, max: 10, step: 0.25 },
+      defaultValue: 0.5,
+      description: 'speed of continuious point motion',
+      type: 'number'
+    },
     smoothing: {
       name: 'smoothing',
       control: 'boolean',

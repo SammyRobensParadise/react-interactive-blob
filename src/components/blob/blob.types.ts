@@ -7,6 +7,8 @@ export interface BlobInterface {
   sensitivity?: number
   // the number of points used to construct the blob
   points?: number
+  // speed of continuious point motion
+  speed?: number
   // smoothing between points
   smoothing?: boolean
   // show markers at each point
