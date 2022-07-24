@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Readme from '../../README.md'
 import Blob from '../components/blob/blob.component'
 import { BlobInterface } from '../components/blob/blob.types'
+
 import {
   DEFAULT_COLOR,
   DEFAULT_ELASTICITY,
@@ -117,8 +118,9 @@ export default {
     }
   }
 } as ComponentMeta<typeof Blob>
-
+//  @ts-ignore
 const Template: ComponentStory<typeof Blob> = (args: BlobInterface) => (
+  // @ts-ignore
   <Blob {...args} />
 )
 
