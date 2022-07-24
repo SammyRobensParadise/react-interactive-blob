@@ -7,6 +7,10 @@ React Interactive Blob is an interactive and customizable blob component for rea
 - ✅ Simple API
 - ✅ No Physics knowledge required
 
+<a href="https://www.npmjs.com/package/react-interactive-blob">
+  <img src="https://img.shields.io/npm/v/react-interactive-blob?style=for-the-badge">
+</a>
+
 ---
 
 - [Getting Started](#getting-started)
