@@ -15,7 +15,6 @@ import {
   DEFAULT_SPEED
 } from '../components/blob/blob.config'
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Blob',
   component: Blob,
@@ -24,7 +23,6 @@ export default {
       description: { component: Readme }
     }
   },
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     color: {
       name: 'color',
@@ -120,10 +118,8 @@ export default {
   }
 } as ComponentMeta<typeof Blob>
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Blob> = (args: BlobInterface) => (
   <Blob {...args} />
 )
 
 export const blob = Template.bind({})
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
