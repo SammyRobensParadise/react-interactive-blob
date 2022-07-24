@@ -42,6 +42,7 @@
     "@storybook/manager-webpack4": "^6.5.9",
     "@storybook/react": "^6.5.9",
     "@storybook/testing-library": "^0.0.13",
+    "@storybook/theming": "^6.5.9",
     "@types/react": "^18.0.14",
     "@typescript-eslint/eslint-plugin": "^5.30.4",
     "@typescript-eslint/parser": "^5.30.4",
@@ -52,16 +53,14 @@
     "eslint-plugin-jsx-a11y": "^6.6.0",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-storybook": "^0.5.13",
+    "eslint-plugin-storybook": "^0.6.1",
     "gh-pages": "^4.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rollup": "^2.75.7",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.7.4"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
   }
 }
